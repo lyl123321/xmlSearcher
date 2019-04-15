@@ -9,25 +9,25 @@ import java.util.Map;
 
 public class App {
     public static void main(String args[]){
-        //阈值 τ
-        double τ = 0.9;
         //url
-        String xml = "data/dblp/dblp5.xml"; 
+        String xml = "data/dblp/dblp2.xml"; 
+        //获取前 K 个结果
+        int K = 10;
+        //阈值 τ
+        double τ = 0.6;
         
-        /*
+        
         //1、解析
         String dtd = "data/dblp/dblp.dtd";
         String dtdxml = "data/dblp/dtd.xml";
         PreParse parser = new PreParse(xml, dtd, dtdxml);
         parser.parse();
-        */
+        
         
         //2、关键字查询
         Date date1 = new Date();
         System.out.println("1. Search: ");
-        String[] query = {"Tomoko", "Ohara", "2001"};
-        //获取前 K 个结果
-        int K = 10;
+        String[] query = {"E.", "L.", "D.", "Data", "Structured"};
         List<Map> results = Searcher.search(query, xml, K);
         System.out.println("query: ");
         System.out.println(Arrays.toString(query));
