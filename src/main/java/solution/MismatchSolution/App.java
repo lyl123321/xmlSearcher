@@ -16,18 +16,30 @@ public class App {
         //阈值 τ
         double τ = 0.6;
         
-        
+        /*
         //1、解析
         String dtd = "data/dblp/dblp.dtd";
         String dtdxml = "data/dblp/dtd.xml";
         PreParse parser = new PreParse(xml, dtd, dtdxml);
         parser.parse();
+        */
         
+        /* 1\ String[] query = {"Mark", "F.", "D.", "1990"};
+         * 2\ String[] query = {"Wang", "Lee", "Leonid", "1998"};
+         * 3\ String[] query = {"Brown", "Robert", "Active", "1999"};
+         * 4\ String[] query = {"Brown", "Robert", "Active", "Roger"};
+         * 5\ String[] query = {"Javed", "Helena", "Implementation"};
+         * 6\ String[] query = {"Mark", "Joe", "Frank", "2001"};
+         * 7\ String[] query = {"E.", "L.", "D.", "Data", "Structured"};
+         * 8\ String[] query = {"Gray", "Bruce", "Index", "Report"};
+         * 9\ String[] query = {"Jim", "Mike", "Object", "school of"};
+         * 10\ String[] query = {"A.", "B.", "C.", "Morris", "Logic"};
+         */
         
         //2、关键字查询
         Date date1 = new Date();
         System.out.println("1. Search: ");
-        String[] query = {"E.", "L.", "D.", "Data", "Structured"};
+        String[] query = {"Brown", "Robert", "Active", "1999"};
         List<Map> results = Searcher.search(query, xml, K);
         System.out.println("query: ");
         System.out.println(Arrays.toString(query));
@@ -44,6 +56,7 @@ public class App {
         Resolver resolver = new Resolver(query, results, τ);
         ArrayList<HashMap> suggestedQueries = resolver.resolve();
         resolver.close();
+        /*
         if(suggestedQueries != null) {
             int num = suggestedQueries.size();
             System.out.println("suggested queries number: " + num);
@@ -53,6 +66,7 @@ public class App {
             	System.out.println(suggestedQueries.get(i));
     		}
         }
+        */
         System.out.println("resolve time: " + ((new Date()).getTime() - date2.getTime()) + "ms");
     }
 } 
