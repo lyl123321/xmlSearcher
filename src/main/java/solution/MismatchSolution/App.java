@@ -67,6 +67,5 @@ public class App {
     		}
         }
         */
-        System.out.println("resolve time: " + ((new Date()).getTime() - date2.getTime()) + " ms");
     }
 } 

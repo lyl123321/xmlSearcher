@@ -201,7 +201,7 @@ public class Resolver {
 
 			for(int i = 0; i < len; i++) {
 				String node = eNodes[i];
-				String type = replaceTable.getIndex(node).getType();
+				//String type = replaceTable.getIndex(node).getType();
 				String subtree = replaceTable.getIndex(node).getXml();
 				if(!bool[i]) {
 					query.addAll(Arrays.asList(K[i]));
@@ -330,7 +330,7 @@ public class Resolver {
 		String subtree = replaceTable.getIndex(node).getXml();
 		ArrayList<String> keywords = new ArrayList<String>();
 		for(String keyword : Q) {
-			if(subtree.indexOf(keyword) >= 0) {
+			if(subtree.contains(keyword)) {
 				keywords.add(keyword);
 			}
 		}
@@ -449,19 +449,18 @@ public class Resolver {
 		int len = typeList.size();
 		maxContain = new int[len][];
 		switch (model) {
-		case "reed":
-			maxContain[0] = new int[len];
-			Arrays.fill(maxContain[0], 100);
-			maxContain[0][0] = 1;
-			for (int i = 1; i < len; i++) {
-				maxContain[i] = new int[len];
-				Arrays.fill(maxContain[i], 1);;
-			}
-			break;
 		case "dblp":
 			for (int i = 0; i < len; i++) {
 				maxContain[i] = new int[len];
-				Arrays.fill(maxContain[i], 100);;
+				Arrays.fill(maxContain[i], 100);
+				maxContain[i][i] = 1;
+			}
+			break;
+		case "book":
+			for (int i = 0; i < len; i++) {
+				maxContain[i] = new int[len];
+				Arrays.fill(maxContain[i], 100);
+				maxContain[i][i] = 1;
 			}
 			break;
 		default:
