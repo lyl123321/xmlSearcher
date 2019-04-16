@@ -10,7 +10,7 @@ import java.util.Map;
 public class App {
     public static void main(String args[]){
         //url
-        String xml = "data/dblp/dblp2.xml"; 
+        String xml = "data/dblp/dblp5.xml"; 
         //获取前 K 个结果
         int K = 10;
         //阈值 τ
@@ -39,7 +39,7 @@ public class App {
         //2、关键字查询
         Date date1 = new Date();
         System.out.println("1. Search: ");
-        String[] query = {"Brown", "Robert", "Active", "1999"};
+        String[] query = {"Mark", "F.", "D.", "1990"};
         List<Map> results = Searcher.search(query, xml, K);
         System.out.println("query: ");
         System.out.println(Arrays.toString(query));
@@ -48,7 +48,7 @@ public class App {
         	System.out.println("vlca: " + result.get("vlca") + ", nodes: " + Arrays.toString((String[])result.get("nodes")));
 		}
         Date date2 = new Date();
-        System.out.println("search time: " + (date2.getTime() - date1.getTime()) + "ms");
+        System.out.println("search time: " + (date2.getTime() - date1.getTime()) + " ms");
         
         //3、解决查询的失配问题
         System.out.println("--------------------------------------------------");
@@ -67,6 +67,6 @@ public class App {
     		}
         }
         */
-        System.out.println("resolve time: " + ((new Date()).getTime() - date2.getTime()) + "ms");
+        System.out.println("resolve time: " + ((new Date()).getTime() - date2.getTime()) + " ms");
     }
 } 

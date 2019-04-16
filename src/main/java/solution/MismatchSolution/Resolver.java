@@ -73,13 +73,14 @@ public class Resolver {
     		String targetType = getTNT(nodes);
     		System.out.println("tnt: " + targetType);
     		if(vlcaType.contentEquals(targetType)) {
+    			System.out.println("Detector time: " + ((new Date()).getTime() - date1.getTime()) + " ms");
     			System.out.println("This query doesn't exist mismatch problem");
     			return null;
     		}
     		
         }
     	Date date2 = new Date();
-    	System.out.println("Detector time: " + (date2.getTime() - date1.getTime()) + "ms");
+    	System.out.println("Detector time: " + (date2.getTime() - date1.getTime()) + " ms");
     	
     	//Suggester
     	for(Map r : R) {
@@ -149,7 +150,7 @@ public class Resolver {
         }
     	
     	sort(suggestedQueries);
-    	System.out.println("Suggester time: " + ((new Date()).getTime() - date2.getTime()) + "ms");
+    	System.out.println("Suggester time: " + ((new Date()).getTime() - date2.getTime()) + " ms");
     	
     	return suggestedQueries;
     }
