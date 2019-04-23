@@ -16,13 +16,13 @@ public class App {
         //阈值 τ
         double τ = 0.6;
         
-        /*
+        
         //1、解析
         String dtd = "data/dblp/dblp.dtd";
         String dtdxml = "data/dblp/dtd.xml";
         PreParse parser = new PreParse(xml, dtd, dtdxml);
         parser.parse();
-        */
+        
         
         /* 1\ String[] query = {"Mark", "F.", "D.", "1990"};
          * 2\ String[] query = {"Wang", "Lee", "Leonid", "1998"};
@@ -56,7 +56,7 @@ public class App {
         Resolver resolver = new Resolver(query, results, τ);
         ArrayList<HashMap> suggestedQueries = resolver.resolve();
         resolver.close();
-        /*
+        
         if(suggestedQueries != null) {
             int num = suggestedQueries.size();
             System.out.println("suggested queries number: " + num);
@@ -66,6 +66,6 @@ public class App {
             	System.out.println(suggestedQueries.get(i));
     		}
         }
-        */
+        
     }
 } 
